@@ -12,7 +12,7 @@ This example uses p5 preload function to create the classifier
 // Classifier Variable
 let classifier;
 // Model URL
-let imageModelURL = 'https://teachablemachine.withgoogle.com/models/B0RLVaw_M/';
+let imageModelURL = 'https://teachablemachine.withgoogle.com/models/Gi2g2JbYk/';
 
 // Video
 let video;
@@ -40,13 +40,18 @@ function setup() {
 function draw() {
   background(0);
   // Draw the video
-  image(flippedVideo, 0, 0);
+  image(flippedVideo,  , 0);
 
   // Draw the label
   fill(255);
   textSize(16);
   textAlign(CENTER);
   text(label, width / 2, height - 4);
+
+  // if (label = "slouching") {
+  //
+  // }
+
 }
 
 // Get a prediction for the current video frame
@@ -68,3 +73,6 @@ function gotResult(error, results) {
   // Classifiy again!
   classifyVideo();
 }
+
+// audio = new Audio("styles.css");
+// audio.addEventListener("canplaythrough", () )

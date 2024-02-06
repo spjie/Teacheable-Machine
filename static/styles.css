@@ -1,0 +1,26 @@
+body {
+    background-color: #fac8e8;
+    color: #1b3096;
+    text-align: center;
+    font-family: "josefin-sans", sans-serif;
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 75px;
+    font-family: mudstone-sans, sans-serif;
+}
+
+button {
+    font-family: "josefin-sans", sans-serif;
+    border-radius: 50px;
+    background-color: #1b3096;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 20px;
+}
+
+div {
+    padding-top: 20px;
+}
