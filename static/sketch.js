@@ -4,6 +4,8 @@
 // the link to your model provided by Teachable Machine export panel
 const URL = "https://teachablemachine.withgoogle.com/models/11_R4s6rY/";
 let model, webcam, ctx, labelContainer, maxPredictions;
+let videoIsOn = false;
+
 async function init() {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
@@ -14,23 +16,36 @@ async function init() {
     model = await tmPose.load(modelURL, metadataURL);
     maxPredictions = model.getTotalClasses();
 
-    // Convenience function to set up a webcam
-    const size = 400;
-    const flip = true; // whether to flip the webcam
-    webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
-    await webcam.setup(); // request access to the webcam
-    await webcam.play();
-    window.requestAnimationFrame(loop);
+    if (videoIsOn == false) {
+        document.getElementById("label-container").innerHTML = "loading..."
+        // Convenience function to set up a webcam
+        const size = 400;
+        const flip = true; // whether to flip the webcam
+        webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
 
-    // append/get elements to the DOM
-    const canvas = document.getElementById("canvas");
-    canvas.width = size;
-    canvas.height = size;
-    ctx = canvas.getContext("2d");
-    labelContainer = document.getElementById("label-container");
-    for (let i = 0; i < maxPredictions; i++) { // and class labels
-        labelContainer.appendChild(document.createElement("div"));
+        // append/get elements to the DOM
+        const canvas = document.getElementById("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        ctx = canvas.getContext("2d");
+        document.getElementById("label-container").innerHTML = ""
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) { // and class labels
+            labelContainer.appendChild(document.createElement("div"));
+        }
+        document.getElementById("play-button").innerHTML = "stop"
+    } else {
+        await webcam.stop();
+        document.getElementById("sound").pause();
+        document.getElementById("sound").currentTime = 0;
+        document.getElementById("play-button").innerHTML = "start"
+        window.stop();
     }
+
+    videoIsOn = !videoIsOn;
 }
 
 async function loop(timestamp) {
@@ -54,11 +69,13 @@ async function predict() {
 
     const audio = document.getElementById("sound");
 
-    if (prediction[0].probability.toFixed(2) > 0.9) {
-        audio.pause();
-        audio.currentTime = 0;
-    } else {
-        audio.play();
+    if (videoIsOn == true) {
+        if (prediction[0].probability.toFixed(2) > 0.9) {
+            audio.pause();
+            audio.currentTime = 0;
+        } else {
+            audio.play();
+        }
     }
     // finally draw the poses
     drawPose(pose);
