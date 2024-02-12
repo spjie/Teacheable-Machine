@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <link rel="stylesheet" href="https://use.typekit.net/kyh7hrm.css">
     <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/sketch.js"></script>
     <audio src="/static/sound.mp3" style="display:none;" preload="auto" id="sound"></audio>
 </head>
 
@@ -35,30 +36,18 @@
     </div>
 </nav>
 
-<div id="background">
+<div id="background" class="py-5">
+    <!--<h2>₊✩‧₊˚౨ৎ˚₊✩‧₊</h2>-->
     <div class="my-5">
-        <h2>welcome to</h2>
-        <h1>Posture Corrector</h1>
         <h2>⋆｡‧˚ʚ ✿ ɞ˚‧｡⋆</h2>
+        <h1>Posture Corrector</h1>
+<!--        <button type="button" onclick="init()" id="play-button">start</button>-->
     </div>
-    <div class="my-5">
-        <img src="/static/rabbits.jpeg" class="img-fluid" alt="calico critters rabbits in a chair">
-    </div>
-    <div class="my-5">
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-2">
-                <a href="/posture-corrector">
-                    <button type="button">get started →</button>
-                </a>
-            </div>
-            <div class="col-sm-2">
-                <a href="/about">
-                    <button type="button">learn more →</button>
-                </a>
-            </div>
-        </div>
+    <div id="label-container"></div>
+    <div>
+        <canvas id="canvas" width="400" height="400" style="background-color: #1b3096" onclick="init()"></canvas>
     </div>
 </div>
 </body>
+
 </html>

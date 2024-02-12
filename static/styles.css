@@ -4,23 +4,54 @@ body {
     text-align: center;
     font-family: "josefin-sans", sans-serif;
     font-size: 20px;
+    /*cursor : url(), auto;*/
 }
 
 h1 {
-    font-size: 75px;
+    font-size: 90px;
     font-family: mudstone-sans, sans-serif;
+}
+
+.navbar-brand {
+    font-family: "josefin-sans", sans-serif;
+    text-align: center;
+    color: #fac8e8;
+}
+
+.navbar-brand:hover {
+     color: #faa4d3;
+}
+
+.nav-link {
+    font-family: "josefin-sans", sans-serif;
+    font-size: 20px;
+    color: #fac8e8;
+    margin-left: 20px;
+}
+
+.nav-link:hover {
+    color: #faa4d3;
+}
+
+.navbar {
+    padding-top: 0px;
+    background-color: #1b3096;
 }
 
 button {
     font-family: "josefin-sans", sans-serif;
     border-radius: 50px;
     background-color: #1b3096;
-    color: white;
+    color: #fac8e8;
     border: none;
     padding: 15px 25px;
     font-size: 20px;
 }
 
-div {
-    padding-top: 20px;
+button:hover {
+    background-color: #334cb7;
+}
+
+#background {
+    background-image: radial-gradient(circle, #f893c2 5%, #fac8e8 60%);
 }
