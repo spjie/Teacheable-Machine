@@ -17,7 +17,7 @@ async function init() {
     maxPredictions = model.getTotalClasses();
 
     if (videoIsOn == false) {
-        document.getElementById("label-container").innerHTML = "loading..."
+        document.getElementById("label-container").innerHTML = "turn your volume up!"
         // Convenience function to set up a webcam
         const size = 400;
         const flip = true; // whether to flip the webcam
